@@ -1,0 +1,181 @@
+/* SECTION 1: RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* SECTION 2: BODY & TYPOGRAPHY */
+
+body {
+    background-color: #e7d379;
+    color: #ff0000;
+    margin: 0;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700; 
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 16px; 
+}
+
+
+h2::before {
+    content: "> ";
+    color: rgb(255, 0, 0);
+}
+
+.intro {
+    background-color: rgb(78, 21, 21);
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+
+/* SECTION 3: NAVIGATION */
+
+nav {
+    margin-top: 10px;
+}
+
+
+nav a {
+    display: inline-block;
+    padding: 7px 16px;
+    margin: 0 4px;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+
+/* SECTION 4: CARD BOX MODEL & THEN LAYOUT */
+
+/* Two rules target the same element (#about): ".card" and "#about".
+   They both set border-color and background-color. #about WINS even though it is
+   written BEFORE .card, because an ID selector (specificity 1-0-0) beats a
+   class selector (0-1-0). Order only matters when specificity is equal. */
+
+#about {
+    color: white;
+    background-color: #000000;
+    border-color: rgb(255, 0, 0);                          
+    position: relative;
+}
+
+#about::after {
+    content: "ABOUT";
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    padding: 2px 5px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: black;
+    background-color: rgb(255, 0, 0);
+    border-radius: 3px;
+}
+
+/* The TOTAL rendered width of one .card (which is the border-box):
+    width that is already includes both padding + border which leads to 320px
+   (With content-box, it would be around 320 + 20*2 + 2*2 = 364px.) */
+
+.card {
+    color: rgb(0, 0, 0);
+    margin: 0 auto;
+    margin-bottom: 20px;     
+    width: 320px;
+    max-width: 100%;
+    padding: 20px;
+    border: 2px solid #300909;
+    border-radius: 3px;
+    background-color: rgb(250, 207, 207);
+}
+
+header, footer {
+    text-align: center;
+}
+
+footer {
+    margin: 20px 0;
+}
+
+
+/* SECTION 5: SKILLS */
+
+.skills-list {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    list-style: none;
+}
+
+.skills-list > li {
+    padding: 3px 10px;
+    font-size: 0.6rem;
+    color: black;
+    background-color: rgb(243, 72, 72);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 2rem;
+}
+
+
+/* SECTION 6: DISPLAY & VISIBILITY */
+
+.hide-none {
+    display: none;
+}
+
+.hide-visibility {
+    visibility: hidden;
+}
+
+
+.scroll-box {
+    height: 200px;                             
+    overflow: auto;
+    text-align: left;
+}
+
+
+/* 
+GUIDED QUESTIONS (plus my answer to each question):
+   1.  In your own words, why did one of your two conflicting rules win in Part A?
+       >   Based on the css code I made, #about still beat .card that is because ID selector has higher specificity than a
+           class selector. Order did not matter here because #about is written first but still wins though.
+
+   2.  What is the rendered width of one .card if box-sizing were content-box instead of border-box?
+       >   So based on the question: 320 (which is the width) + 20 + 20 (the left/right padding) + 2 + 2 (the left/right border)
+           = 364px (final width).
+
+   3.  When would you choose visibility: hidden instead of display: none?
+       >   I would use visibility: hidden as when the element should vanish but its space must stay,
+            in order for the layout will either not shift or jump. For example when a specific messsage is toggled on/off, 
+            or when a placeholder is needed to keep the layout consistent, I would then choose visibility: hidden to maintain that layout.
+      
+*/
